@@ -44,16 +44,20 @@ const Navbar: React.FC = () => {
     if (!el) return;
 
     const runScroll = () => {
-      try {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      } catch {
-        el.scrollIntoView();
-      }
+      const navbarHeight = 64; // h-16 = 64px
+      const offset = 20; // Extra spacing
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - navbarHeight - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     };
 
     if (closeMenu) {
       setIsOpen(false);
-      setTimeout(runScroll, 220);
+      setTimeout(runScroll, 300);
     } else {
       runScroll();
     }
