@@ -124,7 +124,8 @@ const Navbar: React.FC = () => {
             <div className="flex flex-1 justify-end lg:hidden">
               <button
                 onClick={toggleMenu}
-                className="inline-flex items-center justify-center p-2 rounded-md text-slate-700 dark:text-slate-200 hover:text-blue-600 focus:outline-none"
+                className="inline-flex items-center justify-center p-3 rounded-xl text-slate-700 dark:text-slate-200 hover:text-blue-600 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all min-h-[44px] min-w-[44px]"
+                aria-label={isOpen ? 'Close menu' : 'Open menu'}
               >
                 {isOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
@@ -147,32 +148,37 @@ const Navbar: React.FC = () => {
             exit={{ opacity: 0, height: 0 }}
             className="lg:hidden bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 overflow-hidden"
           >
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <div className="px-4 pt-4 pb-6 space-y-2">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 block px-3 py-2 rounded-md text-base font-medium whitespace-nowrap"
+                  className="text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 active:bg-slate-200 dark:active:bg-slate-800 block px-4 py-3 rounded-xl text-base font-medium whitespace-nowrap transition-all min-h-[44px] flex items-center"
                 >
                   {link.name}
                 </a>
               ))}
 
-              <div className="border-t border-slate-200 dark:border-slate-800 my-2 pt-2 flex justify-between items-center px-3">
+              <div className="border-t border-slate-200 dark:border-slate-800 mt-4 pt-4 flex flex-col gap-3 px-1">
                 <button
                   onClick={() => setLanguage(language === "tr" ? "en" : "tr")}
-                  className="flex items-center space-x-2 text-slate-700 dark:text-slate-300"
+                  className="flex items-center justify-between w-full px-4 py-3 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all min-h-[44px]"
                 >
-                  <Languages size={20} />
-                  <span>{language === "tr" ? "Türkçe" : "English"}</span>
+                  <div className="flex items-center space-x-3">
+                    <Languages size={20} />
+                    <span className="font-medium">{language === "tr" ? "Türkçe" : "English"}</span>
+                  </div>
                 </button>
 
                 <button
                   onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                  className="flex items-center space-x-2 text-slate-700 dark:text-slate-300"
+                  className="flex items-center justify-between w-full px-4 py-3 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all min-h-[44px]"
                 >
-                  {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+                  <div className="flex items-center space-x-3">
+                    {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+                    <span className="font-medium">{theme === "dark" ? "Light Mode" : "Dark Mode"}</span>
+                  </div>
                 </button>
               </div>
             </div>

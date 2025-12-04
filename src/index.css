@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Hide scrollbars globally while maintaining scroll functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  -webkit-overflow-scrolling: touch;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
+/* Ensure touch scrolling works smoothly while allowing both directions */
+.touch-pan-x {
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y pan-x;
+}
+
+/* Allow both horizontal and vertical scrolling in containers */
+.horizontal-scroll-container {
+  touch-action: pan-y pan-x;
+}

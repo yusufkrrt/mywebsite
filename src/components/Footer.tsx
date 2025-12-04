@@ -19,23 +19,23 @@ const Footer: React.FC = () => {
   } as const;
 
   return (
-    <footer className="bg-slate-900 text-slate-300 py-12 border-t border-slate-800">
+    <footer className="bg-slate-900 text-slate-300 py-10 sm:py-12 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 sm:gap-8 mb-8">
 
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-indigo-500 bg-clip-text text-transparent">
+            <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-500 to-indigo-500 bg-clip-text text-transparent">
               HYzon Tech
             </span>
-            <p className="mt-4 text-slate-400 max-w-sm">
+            <p className="mt-3 text-sm sm:text-base text-slate-400 max-w-sm">
               {t.hero.subtitle}
             </p>
           </div>
 
           {/* Services */}
           <div>
-            <h4 className="text-white font-semibold mb-4">{t.nav.services}</h4>
+            <h4 className="text-white font-semibold mb-3 sm:mb-4">{t.nav.services}</h4>
             <ul className="space-y-2 text-sm">
               <li><a href="#" className="hover:text-blue-400 transition-colors">Web Development</a></li>
               <li><a href="#" className="hover:text-blue-400 transition-colors">Mobile Apps</a></li>
@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
 
           {/* Social */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Social</h4>
+            <h4 className="text-white font-semibold mb-3 sm:mb-4">Social</h4>
             <div className="flex space-x-4">
               <a
                 href="https://github.com/yusufkrrt"
@@ -79,14 +79,14 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom */}
-        <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
-          <p>&copy; {year} HYzon Tech. {t.footer.rights}</p>
+        <div className="border-t border-slate-800 pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center text-xs sm:text-sm gap-4">
+          <p className="text-center">&copy; {year} HYzon Tech. {t.footer.rights}</p>
 
-          <div className="flex space-x-6 mt-4 md:mt-0">
+          <div className="flex space-x-6">
             <button
               type="button"
               onClick={() => setActiveDoc('privacy')}
-              className="hover:text-white transition-colors underline-offset-4"
+              className="hover:text-white transition-colors underline-offset-4 text-xs sm:text-sm"
             >
               {t.footer.privacy}
             </button>
@@ -94,7 +94,7 @@ const Footer: React.FC = () => {
             <button
               type="button"
               onClick={() => setActiveDoc('terms')}
-              className="hover:text-white transition-colors underline-offset-4"
+              className="hover:text-white transition-colors underline-offset-4 text-xs sm:text-sm"
             >
               {t.footer.terms}
             </button>

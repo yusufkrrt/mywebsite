@@ -73,7 +73,7 @@ const Hero: React.FC = () => {
   const activeHighlightIndex = heroWords.length ? Math.min(highlightIndex, heroWords.length - 1) : 0;
 
   return (
-    <section id="home" className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+    <section id="home" className="relative pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-0 left-1/2 w-full -translate-x-1/2 h-full z-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl dark:bg-blue-600/10 mix-blend-multiply dark:mix-blend-normal animate-blob"></div>
@@ -82,7 +82,7 @@ const Hero: React.FC = () => {
       {floatingBadges.map((badge, index) => (
         <motion.div
           key={badge.id}
-          className={`absolute ${badge.position} pointer-events-none flex items-center gap-3 max-w-[220px] px-4 py-3 rounded-2xl border backdrop-blur bg-white/70 dark:bg-slate-900/70 text-slate-900 dark:text-white shadow-lg shadow-blue-500/10 border-white/40 dark:border-slate-700/80 scale-[0.55] opacity-30 blur-[0.5px] sm:scale-75 sm:opacity-60 sm:blur-0 md:scale-90 md:opacity-80 lg:scale-100 lg:opacity-100`}
+          className={`absolute ${badge.position} pointer-events-none hidden sm:flex items-center gap-3 max-w-[220px] px-4 py-3 rounded-2xl border backdrop-blur bg-white/70 dark:bg-slate-900/70 text-slate-900 dark:text-white shadow-lg shadow-blue-500/10 border-white/40 dark:border-slate-700/80 sm:scale-75 sm:opacity-60 md:scale-90 md:opacity-80 lg:scale-100 lg:opacity-100`}
           animate={{ y: [-6, 6, -6], opacity: [0.3, 0.6, 0.3] }}
           transition={{ duration: 6 + index, repeat: Infinity, repeatType: 'mirror', delay: badge.delay }}
         >
@@ -96,13 +96,13 @@ const Hero: React.FC = () => {
         </motion.div>
       ))}
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-left md:text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="inline-flex items-center px-4 py-2 rounded-full border border-blue-200 dark:border-blue-900 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-medium mb-8">
+          <div className="inline-flex items-center px-3 sm:px-4 py-1.5 rounded-full border border-blue-200 dark:border-blue-900 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs sm:text-sm font-medium mb-6 sm:mb-8">
             <Code2 size={16} className="mr-2" />
             <span className="relative flex h-2 w-2 mr-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
@@ -111,7 +111,7 @@ const Hero: React.FC = () => {
             HYzon Tech v1.0
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-6">
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-4 sm:mb-6">
             {heroWords.map((word, i) => (
               <span
                 key={`${word}-${i}`}
@@ -126,30 +126,30 @@ const Hero: React.FC = () => {
             ))}
           </h1>
           
-          <p className="mt-4 max-w-2xl mx-auto text-xl text-slate-600 dark:text-slate-300">
+          <p className="mt-3 sm:mt-4 max-w-2xl md:mx-auto text-base sm:text-lg text-slate-600 dark:text-slate-300">
             {t.hero.subtitle}
           </p>
 
           <motion.div
-            className="mt-10 flex flex-wrap justify-center gap-4"
+            className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.5 }}
           >
             <motion.a
               href="#contact"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.97 }}
-              className="px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold shadow-lg shadow-blue-500/40 flex items-center gap-2 transition-all"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-8 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-base font-semibold shadow-lg shadow-blue-500/40 flex items-center justify-center gap-2 transition-all w-full sm:w-auto min-h-[52px] active:shadow-blue-500/60"
             >
               {t.hero.cta}
               <ArrowRight size={20} />
             </motion.a>
             <motion.a
               href="#services"
-              whileHover={{ scale: 1.02, y: -1 }}
+              whileHover={{ scale: 1.01 }}
               whileTap={{ scale: 0.98 }}
-              className="px-8 py-4 rounded-xl bg-white dark:bg-slate-900/70 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white font-semibold shadow-md shadow-slate-900/5"
+              className="px-8 py-4 rounded-2xl bg-white dark:bg-slate-900/70 border-2 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-base font-semibold shadow-md shadow-slate-900/5 w-full sm:w-auto min-h-[52px] active:bg-slate-50 dark:active:bg-slate-800"
             >
               {t.hero.secondaryCta}
             </motion.a>
@@ -161,7 +161,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="mt-16 mx-auto max-w-5xl rounded-2xl bg-slate-900 p-2 shadow-2xl ring-1 ring-slate-900/10 transform -rotate-1 hover:rotate-0 transition-transform duration-500"
+          className="hidden md:block mt-12 lg:mt-16 mx-auto max-w-5xl rounded-2xl bg-slate-900 p-2 shadow-2xl ring-1 ring-slate-900/10 transform -rotate-1 hover:rotate-0 transition-transform duration-500"
         >
             <div className="rounded-xl bg-slate-800/50 p-4">
                 <div className="flex space-x-2 mb-4">
