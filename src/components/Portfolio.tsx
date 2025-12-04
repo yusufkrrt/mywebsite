@@ -5,6 +5,7 @@ import { ArrowUpRight, LineChart } from 'lucide-react';
 
 const Portfolio: React.FC = () => {
   const { t } = useLanguage();
+  const projects = t.portfolio.projects;
 
   return (
     <section id="portfolio" className="py-16 sm:py-20 lg:py-24 bg-white dark:bg-slate-950">
@@ -31,9 +32,9 @@ const Portfolio: React.FC = () => {
           </a>
         </div>
 
-        {/* Mobile: Horizontal scroll */}
+        {/* Mobile: Horizontal scroll (touch drag) */}
         <div className="flex sm:hidden overflow-x-auto overflow-y-hidden gap-4 pb-4 -mx-4 px-4 snap-x snap-mandatory scrollbar-hide" style={{touchAction: 'manipulation'}}>
-          {t.portfolio.projects.map((project, index) => (
+          {projects.map((project, index) => (
             <motion.div
               key={project.name}
               initial={{ opacity: 0, y: 20 }}
@@ -67,22 +68,22 @@ const Portfolio: React.FC = () => {
             </motion.div>
           ))}
         </div>
-        
+
         {/* Desktop: Grid layout */}
-        <div className="hidden sm:grid sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-6 xl:gap-8">
-          {t.portfolio.projects.map((project, index) => (
+        <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {projects.map((project, index) => (
             <motion.div
               key={project.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="relative rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/60 backdrop-blur p-5 sm:p-6 shadow-xl shadow-slate-900/5"
+              className="relative rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/60 backdrop-blur p-5 sm:p-6 lg:p-7 shadow-xl shadow-slate-900/5"
             >
               <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
                 {project.category}
               </p>
-              <h3 className="mt-2 sm:mt-3 text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+              <h3 className="mt-2 sm:mt-3 text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
                 {project.name}
               </h3>
               <p className="mt-2 sm:mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-400">
@@ -92,7 +93,7 @@ const Portfolio: React.FC = () => {
                 {project.result}
               </p>
               <div className="mt-4 sm:mt-6 flex flex-wrap gap-2">
-                {project.stack.map((tool) => (
+                {project.stack.map((tool: string) => (
                   <span
                     key={tool}
                     className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-[11px] sm:text-xs font-semibold text-slate-600 dark:text-slate-300"

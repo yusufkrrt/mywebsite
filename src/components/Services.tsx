@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { useLanguage } from '../context/hook';
 import { motion } from 'framer-motion';
 import { Smartphone, Monitor, Globe, ShieldCheck } from 'lucide-react';
+import { useDragScroll } from '../hooks/useDragScroll';
 
 const Services: React.FC = () => {
   const { t, language } = useLanguage();
   const closeLabel = language === 'tr' ? 'Kapat' : 'Close';
   const detailLabel = language === 'tr' ? 'Detayları Gör' : 'See details';
+  const dragScrollRef = useDragScroll();
   const [activeService, setActiveService] = useState<null | {
     icon: React.ReactNode;
     title: string;
@@ -95,36 +97,75 @@ const Services: React.FC = () => {
           ))}
         </div>
         
-        {/* Desktop: Grid layout */}
-        <div className="hidden sm:grid sm:grid-cols-2 xl:grid-cols-4 gap-5 sm:gap-6 xl:gap-8">
-          {services.map((service, index) => (
-            <motion.button
-              key={`desktop-${index}`}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: service.delay, duration: 0.5 }}
-              whileHover={{ y: -5 }}
-              type="button"
-              onClick={() => setActiveService(service)}
-              className="text-left bg-white dark:bg-slate-800 p-6 sm:p-7 xl:p-8 rounded-2xl shadow-lg border border-slate-100 dark:border-slate-700 hover:shadow-xl hover:border-blue-500/30 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 flex flex-col h-full"
-            >
-              <div className="bg-slate-50 dark:bg-slate-900/50 w-14 h-14 sm:w-16 sm:h-16 rounded-xl flex items-center justify-center mb-5 flex-shrink-0">
-                {service.icon}
-              </div>
-              <div className="flex-1">
-                <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2 sm:mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
-                  {service.description}
+        {/* Desktop: Grid on large screens, horizontal drag-scroll on narrow desktop */}
+        {/* lg ve üzeri: klasik grid, sm-md arası: yatay şerit + drag-scroll */}
+        <div className="hidden sm:block">
+          {/* lg+: static grid */}
+          <div className="hidden lg:grid lg:grid-cols-2 xl:grid-cols-4 gap-5 lg:gap-6 xl:gap-8">
+            {services.map((service, index) => (
+              <motion.button
+                key={`desktop-grid-${index}`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: service.delay, duration: 0.5 }}
+                whileHover={{ y: -5 }}
+                type="button"
+                onClick={() => setActiveService(service)}
+                className="text-left bg-white dark:bg-slate-800 p-6 lg:p-7 xl:p-8 rounded-2xl shadow-lg border border-slate-100 dark:border-slate-700 hover:shadow-xl hover:border-blue-500/30 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 flex flex-col h-full"
+              >
+                <div className="bg-slate-50 dark:bg-slate-900/50 w-14 h-14 sm:w-16 sm:h-16 rounded-xl flex items-center justify-center mb-5 flex-shrink-0">
+                  {service.icon}
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2 sm:mb-3">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
+                    {service.description}
+                  </p>
+                </div>
+                <p className="mt-6 text-sm font-semibold text-blue-600 dark:text-blue-400">
+                  {detailLabel}
                 </p>
+              </motion.button>
+            ))}
+          </div>
+          {/* sm-md: horizontal strip with drag-scroll */}
+          <div
+            ref={dragScrollRef}
+            className="lg:hidden flex gap-5 overflow-x-auto pb-4 scrollbar-hide select-none cursor-grab active:cursor-grabbing"
+          >
+            {services.map((service, index) => (
+              <div key={`desktop-strip-${index}`} className="min-w-[320px] flex-shrink-0">
+                <motion.button
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: service.delay, duration: 0.5 }}
+                  whileHover={{ y: -5 }}
+                  type="button"
+                  onClick={() => setActiveService(service)}
+                  className="text-left bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-lg border border-slate-100 dark:border-slate-700 hover:shadow-xl hover:border-blue-500/30 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 flex flex-col h-full"
+                >
+                  <div className="bg-slate-50 dark:bg-slate-900/50 w-14 h-14 sm:w-16 sm:h-16 rounded-xl flex items-center justify-center mb-5 flex-shrink-0">
+                    {service.icon}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2 sm:mb-3">
+                      {service.title}
+                    </h3>
+                    <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
+                  <p className="mt-6 text-sm font-semibold text-blue-600 dark:text-blue-400">
+                    {detailLabel}
+                  </p>
+                </motion.button>
               </div>
-              <p className="mt-6 text-sm font-semibold text-blue-600 dark:text-blue-400">
-                {detailLabel}
-              </p>
-            </motion.button>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
       {activeService && (

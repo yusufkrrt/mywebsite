@@ -20,7 +20,7 @@ const TechStack: React.FC = () => {
         </div>
 
         {/* Mobile: Horizontal scroll */}
-        <div className="flex sm:hidden overflow-x-auto overflow-y-hidden gap-3 pb-4 -mx-4 px-4 snap-x snap-mandatory scrollbar-hide" style={{touchAction: 'manipulation'}}>
+        <div className="flex sm:hidden overflow-x-auto overflow-y-hidden gap-3 pb-4 -mx-4 px-4 snap-x snap-mandatory scrollbar-hide" style={{ touchAction: 'manipulation' }}>
           {t.techStack.badges.map((badge, index) => (
             <motion.div
               key={`mobile-${badge.name}-${badge.category}`}
@@ -44,7 +44,7 @@ const TechStack: React.FC = () => {
         </div>
         
         {/* Desktop: Grid layout */}
-        <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+        <div className="hidden sm:grid lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
           {t.techStack.badges.map((badge, index) => (
             <motion.div
               key={`${badge.name}-${badge.category}`}

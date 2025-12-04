@@ -4,12 +4,23 @@ import { useLanguage, useTheme } from "../context/hook";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "../assets/logo_no_background.png";
 
+const SECTION_IDS = [
+  'home',
+  'services',
+  'portfolio',
+  'tech',
+  'about',
+  'team',
+  'contact'
+];
+
 const Navbar: React.FC = () => {
   const { t, language, setLanguage } = useLanguage();
   const { theme, setTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeSection, setActiveSection] = useState('#home');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,6 +38,27 @@ const Navbar: React.FC = () => {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
+  const scrollToSection = (hash: string, closeMenu?: boolean) => {
+    if (!hash.startsWith('#')) return;
+    const el = document.querySelector(hash);
+    if (!el) return;
+
+    const runScroll = () => {
+      try {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } catch {
+        el.scrollIntoView();
+      }
+    };
+
+    if (closeMenu) {
+      setIsOpen(false);
+      setTimeout(runScroll, 220);
+    } else {
+      runScroll();
+    }
+  };
+
   const navLinks = [
     { name: t.nav.home, href: "#home" },
     { name: t.nav.services, href: "#services" },
@@ -36,6 +68,34 @@ const Navbar: React.FC = () => {
     { name: t.nav.team, href: '#team' },
     { name: t.nav.contact, href: "#contact" },
   ];
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(`#${entry.target.id}`);
+          }
+        });
+      },
+      {
+        rootMargin: '-45% 0px -45% 0px'
+      }
+    );
+
+    SECTION_IDS.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const desktopLinkClasses = (href: string) =>
+    `${activeSection === href ? 'text-blue-600 dark:text-blue-400' : 'text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400'} px-3 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap`;
+
+  const mobileLinkClasses = (href: string) =>
+    `${activeSection === href ? 'text-blue-600 dark:text-blue-400' : 'text-slate-700 dark:text-slate-300'} hover:bg-slate-100 dark:hover:bg-slate-900 active:bg-slate-200 dark:active:bg-slate-800 px-4 py-3 rounded-xl text-base font-medium whitespace-nowrap transition-all min-h-[44px] flex items-center`; 
 
   return (
     <nav
@@ -69,7 +129,11 @@ const Navbar: React.FC = () => {
                   <a
                     key={link.name}
                     href={link.href}
-                    className="text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      scrollToSection(link.href);
+                    }}
+                    className={desktopLinkClasses(link.href)}
                   >
                     {link.name}
                   </a>
@@ -153,8 +217,11 @@ const Navbar: React.FC = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 active:bg-slate-200 dark:active:bg-slate-800 block px-4 py-3 rounded-xl text-base font-medium whitespace-nowrap transition-all min-h-[44px] flex items-center"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    scrollToSection(link.href, true);
+                  }}
+                  className={mobileLinkClasses(link.href)}
                 >
                   {link.name}
                 </a>

@@ -19,7 +19,7 @@ export const TRANSLATIONS: Record<'tr' | 'en', TranslationStructure> = {
     },
     services: {
       title: 'Hizmetlerimiz',
-      subtitle: 'Modern teknoloji yığınları ile uçtan uca çözümler sunuyoruz.',
+      subtitle: 'Modern teknolojiler ile uçtan uca çözümler sunuyoruz.',
       web: {
         title: 'Web Geliştirme',
         desc: 'React, Next.js ve modern araçlarla yüksek performanslı, SEO uyumlu web uygulamaları.',
@@ -139,7 +139,7 @@ export const TRANSLATIONS: Record<'tr' | 'en', TranslationStructure> = {
       ],
     },
     techStack: {
-      title: 'Teknoloji Yığını',
+      title: 'Kullandığımız Teknolojiler',
       subtitle: 'Web, mobil, masaüstü ve otonom sistem projelerinde uçtan uca geliştirme yapabilen tam kapsamlı bir ekip.',
       badges: [
         { name: 'React & Next.js', category: 'Web', description: 'Kurumsal UI/UX, SSR ve edge dağıtımlar' },

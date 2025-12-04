@@ -6,8 +6,11 @@ import TechStack from '../components/TechStack';
 import About from '../components/About';
 import Team from '../components/Team';
 import Contact from '../components/Contact';
+import { useSEO } from '../hooks/useSEO';
 
 const Home: React.FC = () => {
+  useSEO();
+
   return (
     <>
       <Hero />

@@ -12,4 +12,6 @@
 .touch-pan-x {
   -webkit-overflow-scrolling: touch;
   touch-action: pan-x;
+  cursor: grab;
+  
 }
