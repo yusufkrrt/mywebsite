@@ -29,6 +29,7 @@ export interface TeamMember {
   bio: string;
   focus: string;
   skills: string[];
+  photo?: string;
 }
 
 export interface TeamInsight {

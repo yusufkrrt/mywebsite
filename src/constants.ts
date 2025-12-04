@@ -115,6 +115,27 @@ export const TRANSLATIONS: Record<'tr' | 'en', TranslationStructure> = {
           result: '7/24 izleme · < 120ms gecikme',
           stack: ['C++', 'Python', 'gRPC', 'Azure'],
         },
+        {
+          name: 'Aurora Banking',
+          category: 'Fintech · Next.js / Go',
+          description: 'Regülasyon uyumlu dijital bankacılık deneyimi için modüler hesap, KYC ve ödeme çekirdeği.',
+          result: 'PSD2 uyumlu · %99,995 çalışma süresi',
+          stack: ['Next.js', 'Go', 'PostgreSQL', 'Kubernetes'],
+        },
+        {
+          name: 'Helix Health Hub',
+          category: 'Sağlık · React Native / .NET',
+          description: 'Hasta portalı, tele-sağlık görüşmeleri ve HIPAA uyumlu kayıt yönetimi tek uygulamada.',
+          result: '%35 daha hızlı muayene sonrası iletişim',
+          stack: ['React Native', '.NET', 'SignalR', 'Azure'],
+        },
+        {
+          name: 'Quark Logistics OS',
+          category: 'Lojistik · Vue / Rust',
+          description: 'Gerçek zamanlı taşıma izleme, fiyat optimizasyonu ve dijital gümrük belgeleri platformu.',
+          result: '%22 operasyon maliyeti tasarrufu',
+          stack: ['Vue', 'Rust', 'WebSocket', 'GCP'],
+        },
       ],
     },
     techStack: {
@@ -136,18 +157,20 @@ export const TRANSLATIONS: Record<'tr' | 'en', TranslationStructure> = {
       subtitle: 'Her proje için ürün vizyonu, ölçeklenebilir kod ve insan odaklı deneyimi bir arada sunuyoruz.',
       members: [
         {
-          name: 'Hüseyin Yılmaz',
-          title: 'Lead Web & AI Engineer',
-          bio: 'PHP / Laravel ile aktif projeler geliştiren, UI/UX prensiplerini projelerine yayan ve Python tabanlı yapay zekâ çözümlerinde deneyimli tam yığın geliştirici.',
-          focus: 'Web platformları · Yapay zekâ servisleri · Otonom sistem entegrasyonları',
-          skills: ['Laravel', 'React', 'Python AI', 'C++', 'C#'],
-        },
-        {
           name: 'Yusuf Kurt',
           title: 'Product Engineer · Mobile & Systems',
           bio: 'Flutter ve React Native ile üretime hazır mobil uygulamalar geliştiren, gerekirse native kod yazabilen ve masaüstü / otonom sistem çözümleri üretebilen mühendis.',
           focus: 'Mobil deneyimler · Masaüstü araçlar · Otonom kontrol yazılımları',
-          skills: ['Flutter', 'React Native', 'UI/UX', 'C++', 'C#'],
+          skills: ['Flutter', 'React Native', 'React', 'UI/UX', 'C++', 'C#'],
+          photo: '/assets/team/yusuf.jpg',
+        },
+        {
+          name: 'Hüseyin Yılmaz',
+          title: 'Lead Web & AI Engineer',
+          bio: 'PHP / Laravel ile aktif projeler geliştiren, UI/UX prensiplerini projelerine yayan ve Python tabanlı yapay zekâ çözümlerinde deneyimli tam yığın geliştirici.',
+          focus: 'Web platformları · Yapay zekâ servisleri · Otonom sistem entegrasyonları',
+          skills: ['PHP', 'Laravel', 'React', 'Python AI', 'C++', 'C#'],
+          photo: '/assets/team/hüseyin.jpg',
         },
       ],
       insights: [
@@ -280,6 +303,27 @@ export const TRANSLATIONS: Record<'tr' | 'en', TranslationStructure> = {
           result: 'Always-on monitoring · < 120ms latency',
           stack: ['C++', 'Python', 'gRPC', 'Azure'],
         },
+        {
+          name: 'Aurora Banking',
+          category: 'Fintech · Next.js / Go',
+          description: 'Modular accounts, KYC and payments core powering a regulation-ready digital bank.',
+          result: 'PSD2 compliant · 99.995% uptime',
+          stack: ['Next.js', 'Go', 'PostgreSQL', 'Kubernetes'],
+        },
+        {
+          name: 'Helix Health Hub',
+          category: 'Healthcare · React Native / .NET',
+          description: 'Patient portal, telehealth visits and HIPAA-grade records in one secure app.',
+          result: '35% faster post-visit follow-ups',
+          stack: ['React Native', '.NET', 'SignalR', 'Azure'],
+        },
+        {
+          name: 'Quark Logistics OS',
+          category: 'Logistics · Vue / Rust',
+          description: 'Live transport telemetry, rate optimization and digital customs workflows.',
+          result: '22% lower operational cost',
+          stack: ['Vue', 'Rust', 'WebSocket', 'GCP'],
+        },
       ],
     },
     techStack: {
@@ -301,19 +345,24 @@ export const TRANSLATIONS: Record<'tr' | 'en', TranslationStructure> = {
       subtitle: 'We pair product thinking with scalable code and human-centered experience.',
       members: [
         {
-          name: 'Hüseyin Yılmaz',
-          title: 'Lead Web & AI Engineer',
-          bio: 'Full-stack engineer shipping Laravel platforms, refined UI/UX and Python-driven AI assistants.',
-          focus: 'Web platforms · AI services · Autonomous integrations',
-          skills: ['Laravel', 'React', 'Python AI', 'C++', 'C#'],
-        },
-        {
           name: 'Yusuf Kurt',
           title: 'Product Engineer · Mobile & Systems',
-          bio: 'Delivers production-grade Flutter & React Native apps, native extensions, desktop and autonomous tooling.',
-          focus: 'Mobile experiences · Desktop tooling · Autonomous control software',
-          skills: ['Flutter', 'React Native', 'UI/UX', 'C++', 'C#'],
+          bio: 'Engineer building production-ready mobile apps with Flutter and React Native, writing native code when needed, and delivering desktop/autonomous system solutions.',
+          focus: 'Mobile experiences · Desktop tools · Autonomous control software',
+          skills: ['Flutter', 'React Native', 'React', 'UI/UX', 'C++', 'C#'],
+          photo: '/assets/team/yusuf.jpg',
         },
+
+        {
+          name: 'Hüseyin Yılmaz',
+          title: 'Lead Web & AI Engineer',
+          bio: 'Full-stack engineer crafting scalable Laravel platforms, refined UI/UX, and Python-powered AI assistants that integrate seamlessly into real-world workflows.',
+          focus: 'Web platforms · AI services · Autonomous integrations',
+          skills: ['PHP','Laravel', 'React', 'Python AI', 'C++', 'C#'],
+          photo: '/assets/team/hüseyin.jpg',
+        }
+
+
       ],
       insights: [
         {
