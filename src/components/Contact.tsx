@@ -4,18 +4,33 @@ import { motion } from 'framer-motion';
 import { Send, Mail, MapPin, Phone, CheckCircle2 } from 'lucide-react';
 
 const Contact: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [formState, setFormState] = useState<'idle' | 'sending' | 'success'>('idle');
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [error, setError] = useState<string | null>(null);
+  const supportEmail = t.contact.supportEmail;
+  const requiredError = language === 'tr' ? 'Lütfen tüm alanları doldurun.' : 'Please fill out all fields.';
+  const subjectPrefix = language === 'tr' ? 'Yeni Proje Mesajı' : 'New Project Message';
+  const senderLabel = language === 'tr' ? 'Gönderen' : 'Sender';
+  const messageLabel = language === 'tr' ? 'Mesaj' : 'Message';
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setError(requiredError);
+      return;
+    }
+    setError(null);
     setFormState('sending');
-    // Simulate API call
     setTimeout(() => {
+      const subject = `${subjectPrefix} - ${formData.name}`;
+      const body = `${senderLabel}: ${formData.name} (${formData.email})\n\n${messageLabel}:\n${formData.message}`;
+      const mailto = `mailto:${supportEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailto;
       setFormState('success');
-      // Reset after 3 seconds
-      setTimeout(() => setFormState('idle'), 3000);
-    }, 1500);
+      setFormData({ name: '', email: '', message: '' });
+      setTimeout(() => setFormState('idle'), 4000);
+    }, 800);
   };
 
   return (
@@ -39,7 +54,9 @@ const Contact: React.FC = () => {
               </div>
               <div>
                 <h3 className="text-lg font-medium text-slate-900 dark:text-white">Email</h3>
-                <p className="mt-1 text-slate-600 dark:text-slate-400">info@ohtech.com</p>
+                <a href={`mailto:${supportEmail}`} className="mt-1 block text-blue-600 dark:text-blue-400 font-semibold">
+                  {supportEmail}
+                </a>
               </div>
             </div>
             
@@ -65,7 +82,7 @@ const Contact: React.FC = () => {
             
             <div className="mt-8 p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
                 <p className="text-sm text-slate-500 italic">
-                    "Great things in business are never done by one person. They're done by a team of people." - Steve Jobs
+                    {language==="en"? "Great things in business are never done by one person. They're done by a team of people. - Steve Jobs" : "Harika işler asla tek bir kişi tarafından yapılmaz. Onları bir ekip yapar. - Steve Jobs"}
                 </p>
             </div>
           </div>
@@ -91,10 +108,15 @@ const Contact: React.FC = () => {
                     {t.contact.name}
                     </label>
                     <input
-                    type="text"
-                    id="name"
-                    required
-                    className="mt-1 block w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                      type="text"
+                      id="name"
+                      required
+                      value={formData.name}
+                      onChange={(event) => {
+                        setError(null);
+                        setFormData((prev) => ({ ...prev, name: event.target.value }));
+                      }}
+                      className="mt-1 block w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                     />
                 </div>
                 <div>
@@ -102,10 +124,15 @@ const Contact: React.FC = () => {
                     {t.contact.email}
                     </label>
                     <input
-                    type="email"
-                    id="email"
-                    required
-                    className="mt-1 block w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                      type="email"
+                      id="email"
+                      required
+                      value={formData.email}
+                      onChange={(event) => {
+                        setError(null);
+                        setFormData((prev) => ({ ...prev, email: event.target.value }));
+                      }}
+                      className="mt-1 block w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                     />
                 </div>
                 <div>
@@ -113,12 +140,18 @@ const Contact: React.FC = () => {
                     {t.contact.message}
                     </label>
                     <textarea
-                    id="message"
-                    rows={4}
-                    required
-                    className="mt-1 block w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-none"
+                      id="message"
+                      rows={4}
+                      required
+                      value={formData.message}
+                      onChange={(event) => {
+                        setError(null);
+                        setFormData((prev) => ({ ...prev, message: event.target.value }));
+                      }}
+                      className="mt-1 block w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-none"
                     ></textarea>
                 </div>
+                {error && <p className="text-sm text-red-500">{error}</p>}
                 <button
                     type="submit"
                     disabled={formState === 'sending'}

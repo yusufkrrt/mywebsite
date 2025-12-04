@@ -2,6 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
+import logoNoBg from './assets/logo_no_background.png';
+
+const favicon = document.querySelector<HTMLLinkElement>("link[rel='icon']");
+if (favicon) {
+  favicon.href = logoNoBg;
+}
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
