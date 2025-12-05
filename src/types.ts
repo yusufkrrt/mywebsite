@@ -37,6 +37,11 @@ export interface TeamInsight {
   description: string;
 }
 
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
 export interface TranslationStructure {
   nav: {
     home: string;
@@ -46,6 +51,7 @@ export interface TranslationStructure {
     portfolio: string;
     tech: string;
     team: string;
+    faq: string;
   };
   hero: {
     title: string;
@@ -105,5 +111,10 @@ export interface TranslationStructure {
     subtitle: string;
     members: TeamMember[];
     insights: TeamInsight[];
+  };
+  faq: {
+    title: string;
+    subtitle: string;
+    items: FAQItem[];
   };
 }

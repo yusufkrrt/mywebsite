@@ -7,6 +7,8 @@ import About from '../components/About';
 import Team from '../components/Team';
 import Contact from '../components/Contact';
 import { useSEO } from '../hooks/useSEO';
+import ScrollToTopButton from '../components/ScrollToTopButton';
+import FAQ from '../components/FAQ';
 
 const Home: React.FC = () => {
   useSEO();
@@ -19,7 +21,9 @@ const Home: React.FC = () => {
       <TechStack />
       <About />
       <Team />
+      <FAQ />
       <Contact />
+      <ScrollToTopButton />
     </>
   );
 };

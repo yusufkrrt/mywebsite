@@ -11,6 +11,7 @@ const SECTION_IDS = [
   'tech',
   'about',
   'team',
+  'faq',
   'contact'
 ];
 
@@ -70,6 +71,7 @@ const Navbar: React.FC = () => {
     { name: t.nav.tech, href: '#tech' },
     { name: t.nav.about, href: "#about" },
     { name: t.nav.team, href: '#team' },
+    { name: t.nav.faq, href: '#faq' },
     { name: t.nav.contact, href: "#contact" },
   ];
 

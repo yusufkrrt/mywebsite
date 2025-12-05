@@ -10,6 +10,7 @@ export const TRANSLATIONS: Record<'tr' | 'en', TranslationStructure> = {
       portfolio: 'Portföy',
       tech: 'Teknolojiler',
       team: 'Ekibimiz',
+      faq: 'Sık Sorulanlar',
     },
     hero: {
       title: 'Dijital Geleceğinizi İnşa Ediyoruz',
@@ -188,6 +189,28 @@ export const TRANSLATIONS: Record<'tr' | 'en', TranslationStructure> = {
         },
       ],
     },
+    faq: {
+      title: 'Sık Sorulan Sorular',
+      subtitle: 'Yazılım projelerinde en çok merak edilen süre, maliyet ve teknoloji detaylarını sizin için cevaplıyoruz.',
+      items: [
+        {
+          question: 'HYzon Tech hangi teknolojilerle projeler geliştiriyor?',
+          answer: 'React, Next.js, Laravel, Flutter, React Native, C#, C++ ve Python gibi modern stackler ile web, mobil, masaüstü ve otonom sistem projeleri geliştiriyoruz. Bulutta ise AWS ve Azure tercih ediyoruz.'
+        },
+        {
+          question: 'Projeye başlamadan önce hangi adımları izliyorsunuz?',
+          answer: 'Önce discovery çalışması yapıp gereksinimleri çıkarıyoruz, sonra UX prototipleri, teknik mimari ve sprint planı hazırlıyoruz. Tüm süreç Jira/Notion üzerinden şeffaf şekilde paylaşılıyor.'
+        },
+        {
+          question: 'SEO ve performans taahhütleriniz neler?',
+          answer: 'Her proje için Lighthouse 90+ performans, Core Web Vitals uyumu, clean semantic HTML ve yapılandırılmış veriler sağlayarak arama sonuçlarında üst sıraları hedefliyoruz.'
+        },
+        {
+          question: 'Bakım ve destek sağlıyor musunuz?',
+          answer: 'Canlıya çıktıktan sonra 7/24 izleme, hata düzeltme SLA’si ve isteğe bağlı olarak sürekli özellik geliştirme hizmeti sunuyoruz.'
+        }
+      ]
+    },
   },
   en: {
     nav: {
@@ -198,6 +221,7 @@ export const TRANSLATIONS: Record<'tr' | 'en', TranslationStructure> = {
       portfolio: 'Portfolio',
       tech: 'Technologies',
       team: 'Our Team',
+      faq: 'FAQ',
     },
     hero: {
       title: 'Building Your Digital Future',
@@ -378,6 +402,28 @@ export const TRANSLATIONS: Record<'tr' | 'en', TranslationStructure> = {
           description: 'Research, design, engineering and DevOps stay within the same core squad.',
         },
       ],
+    },
+    faq: {
+      title: 'Frequently Asked Questions',
+      subtitle: 'Key topics about scope, timelines, pricing and technology adoption answered for your next product.',
+      items: [
+        {
+          question: 'Which stacks does HYzon Tech specialize in?',
+          answer: 'We deliver with React, Next.js, Laravel, Node.js, Flutter, React Native, C#/C++ and Python—deployed on AWS or Azure depending on the workload.'
+        },
+        {
+          question: 'What is the kickoff process for a new project?',
+          answer: 'We start with discovery workshops, shape UX prototypes, document the architecture and agree on a transparent sprint roadmap shared in Jira or Notion.'
+        },
+        {
+          question: 'How do you guarantee SEO and performance?',
+          answer: 'Every launch targets Lighthouse 90+, Core Web Vitals compliance, semantic HTML and structured data so Google surfaces the product higher.'
+        },
+        {
+          question: 'Do you provide maintenance after launch?',
+          answer: 'Yes—24/7 monitoring, error budgets, SLA-driven bug fixes and optional continuous feature delivery plans are part of our service.'
+        }
+      ]
     },
   },
 };

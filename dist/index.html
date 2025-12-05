@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/vite.svg" id="app-favicon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HYzon Tech | Future of Digital</title>
+    <meta name="description" content="HYzon Tech - İsteğe özel web, mobil, masaüstü uygulama ve yapay zekâ çözümleriyle işletmenizin dijital geleceğini tasarlar." />
+    <meta name="keywords" content="HYzon Tech, yazılım ajansı, özel yazılım, React, Flutter, Laravel, mobil uygulama, web geliştirme, Kütahya yazılım" />
+    <meta name="author" content="HYzon Tech" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="canonical" href="https://www.hyzontech.com/" />
+    <link rel="alternate" href="https://www.hyzontech.com/tr" hreflang="tr" />
+    <link rel="alternate" href="https://www.hyzontech.com/en" hreflang="en" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="HYzon Tech | Future of Digital" />
+    <meta property="og:description" content="Özel web, mobil, masaüstü ve yapay zekâ çözümleriyle performans ve güvenliği aynı anda sunan HYzon Tech." />
+    <meta property="og:url" content="https://www.hyzontech.com/" />
+    <meta property="og:site_name" content="HYzon Tech" />
+    <meta property="og:image" content="https://www.hyzontech.com/og-cover.jpg" />
+    <meta property="og:locale" content="tr_TR" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="HYzon Tech | Future of Digital" />
+    <meta name="twitter:description" content="Web, mobil, masaüstü ve otonom sistem projelerinde uçtan uca yazılım çözümleri." />
+    <meta name="twitter:image" content="https://www.hyzontech.com/og-cover.jpg" />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS (CDN for Playground Environment) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'selector',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              primary: {
+                50: '#eff6ff',
+                100: '#dbeafe',
+                500: '#3b82f6',
+                600: '#2563eb',
+                700: '#1d4ed8',
+                900: '#1e3a8a',
+              }
+            },
+            animation: {
+              blob: "blob 7s infinite",
+            },
+            keyframes: {
+              blob: {
+                "0%": {
+                  transform: "translate(0px, 0px) scale(1)",
+                },
+                "33%": {
+                  transform: "translate(30px, -50px) scale(1.1)",
+                },
+                "66%": {
+                  transform: "translate(-20px, 20px) scale(0.9)",
+                },
+                "100%": {
+                  transform: "translate(0px, 0px) scale(1)",
+                },
+              },
+            },
+          }
+        }
+      }
+    </script>
+    
+    <!-- Initial Theme Script -->
+    <script>
+      (function() {
+        try {
+          const stored = localStorage.getItem('theme');
+          const theme = stored === 'light' || stored === 'dark' || stored === 'system' ? stored : 'system';
+          if (!stored) localStorage.setItem('theme', theme);
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const shouldBeDark = theme === 'dark' ? true : theme === 'light' ? false : prefersDark;
+          const root = document.documentElement;
+          root.classList.toggle('dark', shouldBeDark);
+          root.setAttribute('data-theme', shouldBeDark ? 'dark' : 'light');
+        } catch (err) {
+          console.warn('Theme init failed', err);
+        }
+      })();
+    </script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "HYzon Tech",
+        "url": "https://www.hyzontech.com/",
+        "logo": "https://www.hyzontech.com/logo.png",
+        "description": "Özel web, mobil, masaüstü ve yapay zekâ çözümleri sunan HYzon Tech.",
+        "email": "mailto:yuuf_557@hotmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Kütahya",
+          "addressRegion": "TR",
+          "addressCountry": "Turkey"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/company/hyzontech",
+          "https://github.com/hyzontech"
+        ]
+      }
+    </script>
+    
+
+  <link rel="stylesheet" href="/index.css">
+    <script type="importmap">
+    {
+      "imports": {
+        "react/": "https://aistudiocdn.com/react@^19.2.0/",
+        "react": "https://aistudiocdn.com/react@^19.2.0",
+        "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+        "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+        "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.25"
+      }
+    }
+    </script>
+  <script type="module" crossorigin src="/assets/index-bXb7uDmm.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-z8hsTRZN.css">
+</head>
+  <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50 transition-colors duration-300">
+    <div id="root"></div>
+</body>
+</html>
